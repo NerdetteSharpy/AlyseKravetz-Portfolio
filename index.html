@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alyse Kravetz | Senior QA Analyst & Identity SME</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Chosen Palette: Vibrant Analytical Neon (Inspired by QA DRI Story PPT) -->
+    <!-- Background: #0B0F1A (Deep Space) -->
+    <!-- Cards: #161B2E (Midnight Blue) -->
+    <!-- Primary Text: #F8FAFC (Silver Mist) -->
+    <!-- Accents: #A855F7 (Electric Purple), #22D3EE (Cyan Spark), #FACC15 (Neon Amber) -->
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-space': '#0B0F1A',
+                        'midnight-card': '#161B2E',
+                        'text-bright': '#F8FAFC',
+                        'text-dim': '#94A3B8',
+                        'neon-purple': '#A855F7',
+                        'neon-cyan': '#22D3EE',
+                        'neon-amber': '#FACC15',
+                        'border-glass': 'rgba(255, 255, 255, 0.1)'
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0B0F1A;
+            color: #F8FAFC;
+        }
+
+        .glass-panel {
+            background: rgba(22, 27, 46, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0F1A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #A855F7;
+            border-radius: 4px;
+        }
+
+        .milestone-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .milestone-card:hover {
+            transform: translateY(-5px);
+            border-color: #22D3EE;
+            box-shadow: 0 10px 30px -10px rgba(34, 211, 238, 0.3);
+        }
+
+        .glow-text {
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #A855F7, #22D3EE);
+            opacity: 0.3;
+        }
+    </style>
+
+    <!-- Application Structure Plan:
+         1. Hero Section: High-impact dark mode, emphasizing "The DRI" persona.
+         2. Metric Pulse: Digital readout of key stats.
+         3. The Milestone Journey: Replicating the 4-stage process from the PPT (RRQO -> Artifacts -> Test -> Sign-off).
+         4. Interactive History: Deep dive into banking roots and Epic growth.
+         5. Risk Analysis Radar: Visualizing the "shape" of analytical expertise.
+    -->
+    
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="glass-panel sticky top-0 z-50 border-b border-border-glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="h-8 w-8 bg-gradient-to-br from-neon-purple to-neon-cyan rounded flex items-center justify-center text-white font-bold text-lg font-display">AK</div>
+                <div>
+                    <h1 class="text-lg font-bold font-display tracking-tight text-text-bright">Alyse Kravetz</h1>
+                    <p class="text-[10px] text-neon-cyan uppercase tracking-widest font-bold">The QA DRI Story</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest text-text-dim">
+                <button onclick="scrollToSection('dashboard')" class="hover:text-neon-purple transition-colors">Pulse</button>
+                <button onclick="scrollToSection('milestones')" class="hover:text-neon-cyan transition-colors">Milestones</button>
+                <button onclick="scrollToSection('experience')" class="hover:text-neon-amber transition-colors">Journey</button>
+            </nav>
+            <a href="mailto:alysekravetz@gmail.com" class="px-4 py-2 bg-neon-purple text-white text-xs font-bold rounded hover:bg-purple-600 transition-all shadow-[0_0_15px_rgba(168,85,247,0.4)]">INITIATE CONTACT</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- Hero Section -->
+        <section id="dashboard" class="pt-20 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-block px-3 py-1 border border-neon-cyan text-neon-cyan text-[10px] font-bold rounded mb-6 uppercase tracking-[0.2em] animate-pulse">Scanning Profile... Identity Verified</div>
+                <h2 class="text-4xl md:text-6xl font-display font-bold text-text-bright mb-6 glow-text">"If it's not written down,<br>it's not real."</h2>
+                <p class="text-lg text-text-dim max-w-2xl mx-auto leading-relaxed">
+                    Transitioning QA from reactive testing to <span class="text-neon-purple font-bold">strategic quality ownership</span>. Expert in fintech compliance and gaming identity systems.
+                </p>
+            </div>
+
+            <!-- Stats Dashboard -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+                <div class="glass-panel p-6 rounded-lg text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-neon-purple opacity-0 group-hover:opacity-5 transition-opacity"></div>
+                    <div class="text-3xl font-bold font-display text-neon-purple mb-1">10+</div>
+                    <div class="text-[10px] text-text-dim uppercase tracking-widest font-bold">Years in QA</div>
+                </div>
+                <div class="glass-panel p-6 rounded-lg text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-neon-cyan opacity-0 group-hover:opacity-5 transition-opacity"></div>
+                    <div class="text-3xl font-bold font-display text-neon-cyan mb-1">3</div>
+                    <div class="text-[10px] text-text-dim uppercase tracking-widest font-bold">Global Titans</div>
+                    <div class="text-[9px] text-text-dim mt-2">Disney • LEGO • Nike</div>
+                </div>
+                <div class="glass-panel p-6 rounded-lg text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-neon-amber opacity-0 group-hover:opacity-5 transition-opacity"></div>
+                    <div class="text-3xl font-bold font-display text-neon-amber mb-1">180+</div>
+                    <div class="text-[10px] text-text-dim uppercase tracking-widest font-bold">Contract Projects</div>
+                </div>
+                <div class="glass-panel p-6 rounded-lg text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-neon-purple opacity-0 group-hover:opacity-5 transition-opacity"></div>
+                    <div class="text-3xl font-bold font-display text-neon-purple mb-1">AODC</div>
+                    <div class="text-[10px] text-text-dim uppercase tracking-widest font-bold">Compliance SME</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The QA DRI Milestone Journey (From PPT) -->
+        <section id="milestones" class="py-20 border-y border-border-glass bg-midnight-card relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="h-1px flex-grow bg-border-glass"></div>
+                    <h2 class="text-2xl font-display font-bold text-text-bright uppercase tracking-widest">The Milestone Journey</h2>
+                    <div class="h-1px flex-grow bg-border-glass"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <!-- Milestone 1 -->
+                    <div class="milestone-card glass-panel p-6 rounded-lg border-t-4 border-neon-purple">
+                        <div class="text-neon-purple font-bold text-xs mb-4 uppercase tracking-widest">Milestone 1</div>
+                        <h3 class="text-xl font-bold mb-3 font-display">R.R.Q.O</h3>
+                        <p class="text-xs text-text-dim leading-relaxed mb-4">Research, Question, Review, Outline. The foundation of every initiative to prevent project collapse.</p>
+                        <div class="flex gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neon-purple"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-neon-purple"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-gray-600"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-gray-600"></span>
+                        </div>
+                    </div>
+                    <!-- Milestone 2 -->
+                    <div class="milestone-card glass-panel p-6 rounded-lg border-t-4 border-neon-cyan">
+                        <div class="text-neon-cyan font-bold text-xs mb-4 uppercase tracking-widest">Milestone 2</div>
+                        <h3 class="text-xl font-bold mb-3 font-display">Artifacts</h3>
+                        <p class="text-xs text-text-dim leading-relaxed mb-4">Create Test Strategy, Cases, and Requirements. Enforce reusability and traceability for all teams.</p>
+                        <div class="flex gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neon-cyan"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-neon-cyan"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-neon-cyan"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-gray-600"></span>
+                        </div>
+                    </div>
+                    <!-- Milestone 3 -->
+                    <div class="milestone-card glass-panel p-6 rounded-lg border-t-4 border-neon-amber">
+                        <div class="text-neon-amber font-bold text-xs mb-4 uppercase tracking-widest">Milestone 3</div>
+                        <h3 class="text-xl font-bold mb-3 font-display">Test & Report</h3>
+                        <p class="text-xs text-text-dim leading-relaxed mb-4">E2E testing, issue reporting, and bug fixing. Ensuring no blockers move toward sign-off.</p>
+                        <div class="flex gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neon-amber"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-neon-amber"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-neon-amber"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-gray-600"></span>
+                        </div>
+                    </div>
+                    <!-- Milestone 4 -->
+                    <div class="milestone-card glass-panel p-6 rounded-lg border-t-4 border-green-400">
+                        <div class="text-green-400 font-bold text-xs mb-4 uppercase tracking-widest">Milestone 4</div>
+                        <h3 class="text-xl font-bold mb-3 font-display">Sign-Off</h3>
+                        <p class="text-xs text-text-dim leading-relaxed mb-4">Final QA report, live validations, and Handoff. Transition from chaos to certified quality.</p>
+                        <div class="flex gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Journey -->
+        <section id="experience" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-display font-bold text-text-bright mb-12 flex items-center gap-4">
+                <span class="text-neon-purple">#</span> Experience Narrative
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Timeline Navigator -->
+                <div class="lg:col-span-4 relative">
+                    <div class="timeline-line"></div>
+                    <div class="space-y-12 relative z-10" id="timelineList">
+                        <!-- JS items -->
+                    </div>
+                </div>
+
+                <!-- Active View -->
+                <div class="lg:col-span-8">
+                    <div id="jobDetailPanel" class="glass-panel p-8 rounded-lg border-l-4 border-neon-cyan min-h-[400px] flex flex-col justify-center transition-all duration-500">
+                        <div class="text-center text-text-dim space-y-4">
+                            <div class="text-4xl">🌀</div>
+                            <p class="font-display uppercase tracking-widest font-bold">Select Milestone in Journey</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytical Radar & Partnership Cards -->
+        <section class="py-20 bg-midnight-card border-t border-border-glass">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                    
+                    <!-- Radar Chart -->
+                    <div>
+                        <h3 class="text-2xl font-display font-bold text-neon-cyan mb-8 uppercase tracking-widest">Analytical Pulse</h3>
+                        <div class="chart-container glass-panel rounded-lg p-4">
+                            <canvas id="skillsRadar"></canvas>
+                        </div>
+                        <div class="mt-12 flex flex-wrap gap-3">
+                            <span class="px-3 py-1 glass-panel text-[10px] font-bold text-neon-purple border border-neon-purple rounded uppercase">Jira Power User</span>
+                            <span class="px-3 py-1 glass-panel text-[10px] font-bold text-neon-cyan border border-neon-cyan rounded uppercase">Postman API</span>
+                            <span class="px-3 py-1 glass-panel text-[10px] font-bold text-neon-amber border border-neon-amber rounded uppercase">AWS Grafana</span>
+                            <span class="px-3 py-1 glass-panel text-[10px] font-bold text-text-dim border border-border-glass rounded uppercase">Docker</span>
+                            <span class="px-3 py-1 glass-panel text-[10px] font-bold text-text-dim border border-border-glass rounded uppercase">Unreal Engine</span>
+                        </div>
+                    </div>
+
+                    <!-- Partnership Logic -->
+                    <div>
+                        <h3 class="text-2xl font-display font-bold text-neon-purple mb-8 uppercase tracking-widest">The Partners</h3>
+                        <div class="space-y-4">
+                            <div class="glass-panel p-5 rounded-lg border-l-2 border-neon-purple hover:bg-white/5 transition-colors cursor-pointer group" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-text-bright uppercase tracking-wider">Disney | Project Bulldog</h4>
+                                    <span class="text-neon-purple group-hover:translate-x-1 transition-transform">→</span>
+                                </div>
+                                <div class="hidden mt-4 text-xs text-text-dim leading-relaxed detail-area">
+                                    Strategic QA Lead for highly confidential identity integrations. Managed deployment freezes and end-to-end documentation across distributed engineering teams.
+                                </div>
+                            </div>
+                            <div class="glass-panel p-5 rounded-lg border-l-2 border-neon-cyan hover:bg-white/5 transition-colors cursor-pointer group" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-center flex-wrap">
+                                    <h4 class="font-bold text-text-bright uppercase tracking-wider">LEGO x Epic Integration</h4>
+                                    <span class="text-neon-cyan group-hover:translate-x-1 transition-transform">→</span>
+                                </div>
+                                <div class="hidden mt-4 text-xs text-text-dim leading-relaxed detail-area">
+                                    Established the "IdP Master Test Plan" which became the Epic organizational standard for all future account connections.
+                                </div>
+                            </div>
+                            <div class="glass-panel p-5 rounded-lg border-l-2 border-neon-amber hover:bg-white/5 transition-colors cursor-pointer group" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-text-bright uppercase tracking-wider">Nike Airphoria Event</h4>
+                                    <span class="text-neon-amber group-hover:translate-x-1 transition-transform">→</span>
+                                </div>
+                                <div class="hidden mt-4 text-xs text-text-dim leading-relaxed detail-area">
+                                    Primary stakeholder for unidirectional data sharing linking. Navigated strict legal constraints for one of the largest live-gaming integrations.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black py-20 border-t border-border-glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-display font-bold mb-6 glow-text tracking-widest">STATUS: RELEASE READY</h2>
+            <div class="flex justify-center gap-10 mb-12">
+                <a href="mailto:alysekravetz@gmail.com" class="text-neon-cyan hover:text-text-bright transition-colors text-xs font-bold uppercase tracking-widest">Email_Module</a>
+                <a href="https://www.linkedin.com/in/alyse-kravetz" target="_blank" class="text-neon-purple hover:text-text-bright transition-colors text-xs font-bold uppercase tracking-widest">LinkedIn_Connect</a>
+            </div>
+            <p class="text-[10px] text-gray-700 uppercase tracking-widest">© 2026 Alyse Kravetz • Certified DRI Framework</p>
+        </div>
+    </footer>
+
+    <script>
+        const timelineData = [
+            {
+                role: 'Senior QA SME',
+                company: 'EPIC GAMES',
+                period: '2023 - PRESENT',
+                icon: '🚀',
+                color: '#A855F7',
+                summary: 'Designated authority for Identity and Access Control across Epic Online Services.',
+                bullets: ['Led Disney "Project Bulldog" deployment strategy', 'Architected the QA DRI Story framework', 'SME for COPPA & AODC high-risk compliance']
+            },
+            {
+                role: 'QA Analyst',
+                company: 'PSYONIX',
+                period: '2020 - 2023',
+                icon: '🏎️',
+                color: '#22D3EE',
+                summary: 'Primary stakeholder for Rocket Racing vehicle mechanics and global guest compliance.',
+                bullets: ['Created the Cabinet Mode Testing Matrix', 'Identified tooling gaps and led custom debug tool dev', 'Primary QA for Vehicle Physics & Camera systems']
+            },
+            {
+                role: 'Head of Testing',
+                company: 'GREENBOX POS',
+                period: '2018 - 2020',
+                icon: '🏦',
+                color: '#FACC15',
+                summary: 'The Pivot. Promoted to Head of QA in 5 days after breaking core ledger software.',
+                bullets: ['Uncovered critical fintech vulnerabilities day 1', 'Managed 30+ offshore testing assets', 'Established first STLC in the organization']
+            }
+        ];
+
+        const renderTimeline = () => {
+            const container = document.getElementById('timelineList');
+            timelineData.forEach((job, i) => {
+                const item = document.createElement('div');
+                item.className = 'flex items-center gap-6 cursor-pointer group relative z-10';
+                item.onclick = () => selectJob(i);
+                item.innerHTML = `
+                    <div class="w-12 h-12 rounded bg-deep-space border-2 border-border-glass group-hover:border-white flex items-center justify-center text-xl transition-all" style="box-shadow: 0 0 10px ${job.color}33" id="icon-${i}">
+                        ${job.icon}
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold tracking-widest group-hover:text-white transition-colors uppercase" style="color: ${job.color}">${job.company}</h4>
+                        <p class="text-[10px] text-text-dim font-bold">${job.period}</p>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+            selectJob(0);
+        };
+
+        const selectJob = (i) => {
+            const job = timelineData[i];
+            const panel = document.getElementById('jobDetailPanel');
+            
+            // Highlight icons
+            document.querySelectorAll('#timelineList > div > div').forEach((el, idx) => {
+                el.style.borderColor = (idx === i) ? timelineData[idx].color : 'rgba(255,255,255,0.1)';
+            });
+
+            panel.style.opacity = '0';
+            panel.style.transform = 'translateX(20px)';
+            
+            setTimeout(() => {
+                panel.innerHTML = `
+                    <div class="flex justify-between items-start mb-8">
+                        <div>
+                            <h3 class="text-2xl font-display font-bold text-text-bright tracking-tight">${job.role}</h3>
+                            <p class="text-xs font-bold uppercase tracking-widest" style="color: ${job.color}">${job.company}</p>
+                        </div>
+                        <div class="text-[10px] glass-panel px-3 py-1 rounded font-bold">${job.period}</div>
+                    </div>
+                    <p class="text-sm text-text-bright mb-8 italic border-l-2 border-neon-cyan pl-6 bg-white/5 py-4 rounded-r">${job.summary}</p>
+                    <div class="space-y-4">
+                        ${job.bullets.map(b => `<div class="flex items-center gap-4 text-xs text-text-dim">
+                            <span class="w-1.5 h-1.5 rounded-full" style="background-color: ${job.color}"></span>
+                            ${b}
+                        </div>`).join('')}
+                    </div>
+                `;
+                panel.style.opacity = '1';
+                panel.style.transform = 'translateX(0)';
+                panel.style.borderColor = job.color;
+            }, 300);
+        };
+
+        function toggleCard(el) {
+            const detail = el.querySelector('.detail-area');
+            const isOpen = !detail.classList.contains('hidden');
+            
+            document.querySelectorAll('.detail-area').forEach(d => d.classList.add('hidden'));
+            if (!isOpen) detail.classList.remove('hidden');
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.onload = function() {
+            renderTimeline();
+
+            // Skills Radar Chart
+            const ctxRadar = document.getElementById('skillsRadar').getContext('2d');
+            new Chart(ctxRadar, {
+                type: 'radar',
+                data: {
+                    labels: ['Compliance Rigor', 'Risk Analysis', 'Stakeholder Comms', 'Technical Testing', 'Framework Design', 'Ownership'],
+                    datasets: [{
+                        label: 'Analytical Profile',
+                        data: [98, 95, 90, 88, 92, 100],
+                        fill: true,
+                        backgroundColor: 'rgba(168, 85, 247, 0.2)',
+                        borderColor: '#A855F7',
+                        pointBackgroundColor: '#22D3EE',
+                        pointBorderColor: '#fff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(255,255,255,0.1)' },
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            pointLabels: {
+                                color: '#94A3B8',
+                                font: { family: 'Outfit', size: 10, weight: 'bold' }
+                            },
+                            ticks: { display: false }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        };
+    </script>
+</body>
+</html>
